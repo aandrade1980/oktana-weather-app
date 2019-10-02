@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Components
+import Form from "./components/Form";
+import Weather from "./components/Weather";
+
+class App extends React.Component {
+  state = {
+    forecast: undefined,
+    error: undefined
+  };
+
+  setForecast = forecast =>
+    this.setState({
+      forecast
+    });
+
+  setError = error => this.setState(error);
+
+  render() {
+    return (
+      <div className="App">
+        <Form setForecast={this.setForecast} setError={this.setError} />
+        <Weather forecast={this.state.forecast} />
+        {this.state.error && this.state.error}
+      </div>
+    );
+  }
 }
 
 export default App;
