@@ -5,18 +5,24 @@ import "./App.css";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
 
+const initialWeather = {
+  forecast: undefined,
+  description: "",
+  temp: "",
+  humidity: "",
+  pressure: "",
+  city: "",
+  country: "",
+  fahrenheit: true
+};
+
 class App extends React.Component {
   state = {
-    forecast: undefined,
     error: undefined,
-    description: "",
-    temp: "",
-    humidity: "",
-    pressure: "",
-    fahrenheit: true
+    ...initialWeather
   };
 
-  setForecast = data =>
+  setWeather = (data = initialWeather) =>
     this.setState({
       ...data
     });
@@ -37,7 +43,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Form setForecast={this.setForecast} setError={this.setError} />
+        <Form setWeather={this.setWeather} setError={this.setError} />
         <Weather
           forecast={this.state.forecast}
           description={this.state.description}
@@ -46,6 +52,8 @@ class App extends React.Component {
           pressure={this.state.pressure}
           fahrenheit={this.state.fahrenheit}
           changeTempMeasurement={this.changeTempMeasurement}
+          city={this.state.city}
+          country={this.state.country}
         />
         {this.state.error && this.state.error}
       </div>

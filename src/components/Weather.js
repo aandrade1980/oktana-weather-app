@@ -1,5 +1,9 @@
 import React from "react";
 
+// Redux
+import { connect } from "react-redux";
+import { addToFavorites } from "../redux/actions/weatherActions";
+
 const Weather = ({
   forecast,
   description,
@@ -7,7 +11,10 @@ const Weather = ({
   humidity,
   pressure,
   fahrenheit,
-  changeTempMeasurement
+  city,
+  country,
+  changeTempMeasurement,
+  addToFavorites
 }) => {
   const tempDegrees = fahrenheit ? "Fahrenheit" : "Celsius";
 
@@ -29,7 +36,33 @@ const Weather = ({
     ""
   );
 
-  return weatherInfo;
+  return (
+    <div style={{ display: "flex" }}>
+      {weatherInfo}
+      <div>
+        {forecast && (
+          <button
+            onClick={() =>
+              addToFavorites({
+                description,
+                temp,
+                humidity,
+                pressure,
+                fahrenheit,
+                city,
+                country
+              })
+            }
+          >
+            Add to Favorite
+          </button>
+        )}
+      </div>
+    </div>
+  );
 };
 
-export default Weather;
+export default connect(
+  null,
+  { addToFavorites }
+)(Weather);

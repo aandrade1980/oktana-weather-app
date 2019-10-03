@@ -16,16 +16,18 @@ class Form extends React.Component {
     console.log("response => ", jRes);
     if (jRes.cod !== "200") {
       this.props.setError({ error: jRes.message });
-      this.props.setForecast(null);
+      this.props.setWeather(undefined);
     } else {
       this.props.setError({ error: null });
-      this.props.setForecast({
+      this.props.setWeather({
         forecast: jRes.list,
         description: jRes.list[0].weather[0].description,
         temp: Math.round(parseInt(jRes.list[0].main.temp)),
         humidity: jRes.list[0].main.humidity,
         pressure: jRes.list[0].main.pressure,
-        fahrenheit: true
+        fahrenheit: true,
+        country: jRes.city.country,
+        city: jRes.city.name
       });
     }
   };
