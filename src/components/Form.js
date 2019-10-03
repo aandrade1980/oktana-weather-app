@@ -10,7 +10,7 @@ class Form extends React.Component {
   getWeather = async e => {
     e.preventDefault();
     const weatherData = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&appid=${API_KEY}`
+      `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&units=imperial&appid=${API_KEY}`
     );
     const jRes = await weatherData.json();
     console.log("response => ", jRes);
@@ -19,7 +19,13 @@ class Form extends React.Component {
       this.props.setForecast(null);
     } else {
       this.props.setError({ error: null });
-      this.props.setForecast(jRes.list);
+      this.props.setForecast({
+        forecast: jRes.list,
+        description: jRes.list[0].weather[0].description,
+        temp: Math.round(parseInt(jRes.list[0].main.temp)),
+        humidity: jRes.list[0].main.humidity,
+        pressure: jRes.list[0].main.pressure
+      });
     }
   };
 
