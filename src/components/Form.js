@@ -24,7 +24,8 @@ class Form extends React.Component {
         description: jRes.list[0].weather[0].description,
         temp: Math.round(parseInt(jRes.list[0].main.temp)),
         humidity: jRes.list[0].main.humidity,
-        pressure: jRes.list[0].main.pressure
+        pressure: jRes.list[0].main.pressure,
+        fahrenheit: true
       });
     }
   };
