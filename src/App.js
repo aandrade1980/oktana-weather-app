@@ -7,6 +7,7 @@ import "./App.css";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
 import Charts from "./components/Charts";
+import Favorites from "./components/Favorites";
 
 const initialWeather = {
   forecast: undefined,
@@ -50,59 +51,62 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Form setWeather={this.setWeather} setError={this.setError} />
-        <Weather
-          forecast={this.state.forecast}
-          description={this.state.description}
-          temp={this.state.temp}
-          humidity={this.state.humidity}
-          pressure={this.state.pressure}
-          fahrenheit={this.state.fahrenheit}
-          changeTempMeasurement={this.changeTempMeasurement}
-          city={this.state.city}
-          country={this.state.country}
-          id={this.state.cityId}
-        />
-        {this.state.forecast && (
-          <>
-            <div className="chart-buttons-container">
-              <button
-                className={classNames({
-                  active: this.state.chartInfoToShow === "temp"
-                })}
-                type="button"
-                value="temp"
-                onClick={e => this.changeChartData(e)}
-              >
-                Temp
-              </button>
-              <button
-                className={classNames({
-                  active: this.state.chartInfoToShow === "humidity"
-                })}
-                type="button"
-                value="humidity"
-                onClick={e => this.changeChartData(e)}
-              >
-                Humidity
-              </button>
-              <button
-                className={classNames({
-                  active: this.state.chartInfoToShow === "pressure"
-                })}
-                type="button"
-                value="pressure"
-                onClick={e => this.changeChartData(e)}
-              >
-                Pressure
-              </button>
-            </div>
-            <Charts
-              forecast={this.state.forecast}
-              show={this.state.chartInfoToShow}
-            />
-          </>
-        )}
+        <React.StrictMode>
+          <Form setWeather={this.setWeather} setError={this.setError} />
+          <Weather
+            forecast={this.state.forecast}
+            description={this.state.description}
+            temp={this.state.temp}
+            humidity={this.state.humidity}
+            pressure={this.state.pressure}
+            fahrenheit={this.state.fahrenheit}
+            changeTempMeasurement={this.changeTempMeasurement}
+            city={this.state.city}
+            country={this.state.country}
+            id={this.state.cityId}
+          />
+          {this.state.forecast && (
+            <>
+              <div className="chart-buttons-container">
+                <button
+                  className={classNames({
+                    active: this.state.chartInfoToShow === "temp"
+                  })}
+                  type="button"
+                  value="temp"
+                  onClick={e => this.changeChartData(e)}
+                >
+                  Temp
+                </button>
+                <button
+                  className={classNames({
+                    active: this.state.chartInfoToShow === "humidity"
+                  })}
+                  type="button"
+                  value="humidity"
+                  onClick={e => this.changeChartData(e)}
+                >
+                  Humidity
+                </button>
+                <button
+                  className={classNames({
+                    active: this.state.chartInfoToShow === "pressure"
+                  })}
+                  type="button"
+                  value="pressure"
+                  onClick={e => this.changeChartData(e)}
+                >
+                  Pressure
+                </button>
+              </div>
+              <Charts
+                forecast={this.state.forecast}
+                show={this.state.chartInfoToShow}
+              />
+            </>
+          )}
+          <Favorites />
+        </React.StrictMode>
         {this.state.error && (
           <p style={{ gridArea: "data" }}>{this.state.error}</p>
         )}

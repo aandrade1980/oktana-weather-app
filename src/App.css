@@ -4,7 +4,8 @@
   grid-template-rows: auto;
   grid-template-areas:
     "form chart-buttons chart"
-    "data . chart";
+    "data . chart"
+    "favorites . .";
 }
 
 form {
@@ -29,4 +30,8 @@ form {
 .active {
   background: rgb(130, 202, 157);
   outline: none;
+}
+
+.favorites {
+  grid-area: favorites;
 }
