@@ -13,13 +13,17 @@ const Weather = ({
   fahrenheit,
   city,
   country,
+  id,
   changeTempMeasurement,
   addToFavorites
 }) => {
   const tempDegrees = fahrenheit ? "Fahrenheit" : "Celsius";
 
-  const weatherInfo = forecast ? (
+  const weatherInfo = forecast && (
     <div>
+      <p>
+        {city}, {country}
+      </p>
       <p>Conditions: {description}</p>
       <p>
         Temperature: {temp} {tempDegrees}
@@ -32,12 +36,10 @@ const Weather = ({
         alt="Weather"
       />
     </div>
-  ) : (
-    ""
   );
 
   return (
-    <div style={{ display: "flex" }}>
+    <div className="weather-info-container">
       {weatherInfo}
       <div>
         {forecast && (
@@ -50,7 +52,8 @@ const Weather = ({
                 pressure,
                 fahrenheit,
                 city,
-                country
+                country,
+                id
               })
             }
           >

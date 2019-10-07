@@ -1,0 +1,32 @@
+.App {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "form chart-buttons chart"
+    "data . chart";
+}
+
+form {
+  grid-area: form;
+}
+
+.weather-info-container {
+  display: flex;
+  grid-area: data;
+}
+
+.recharts-wrapper {
+  grid-area: chart;
+}
+
+.chart-buttons-container {
+  grid-area: chart-buttons;
+  display: flex;
+  flex-direction: column;
+}
+
+.active {
+  background: rgb(130, 202, 157);
+  outline: none;
+}

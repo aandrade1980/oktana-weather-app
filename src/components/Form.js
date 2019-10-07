@@ -13,7 +13,7 @@ class Form extends React.Component {
       `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&units=imperial&appid=${API_KEY}`
     );
     const jRes = await weatherData.json();
-    console.log("response => ", jRes);
+
     if (jRes.cod !== "200") {
       this.props.setError({ error: jRes.message });
       this.props.setWeather(undefined);
@@ -27,7 +27,8 @@ class Form extends React.Component {
         pressure: jRes.list[0].main.pressure,
         fahrenheit: true,
         country: jRes.city.country,
-        city: jRes.city.name
+        city: jRes.city.name,
+        cityId: jRes.city.id
       });
     }
   };
