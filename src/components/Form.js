@@ -1,6 +1,6 @@
 import React from "react";
 
-const API_KEY = "623b80fca82aa938a4dadc11ffe73bd3";
+const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
 class Form extends React.Component {
   state = {
