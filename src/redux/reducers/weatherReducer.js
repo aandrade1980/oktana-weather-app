@@ -6,7 +6,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case "ADD_FAVORITE":
       const indexCity = state.favorites.find(
-        weather => weather.city === action.payload.city
+        weather => weather.id === action.payload.id
       );
 
       if (indexCity) {

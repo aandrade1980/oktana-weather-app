@@ -27,7 +27,8 @@ class Form extends React.Component {
         pressure: jRes.list[0].main.pressure,
         fahrenheit: true,
         country: jRes.city.country,
-        city: jRes.city.name
+        city: jRes.city.name,
+        cityId: jRes.city.id
       });
     }
   };
