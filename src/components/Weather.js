@@ -32,7 +32,7 @@ const Weather = ({
       <p>Humidity: {humidity}</p>
       <p>Pressure: {pressure}</p>
       <img
-        src={`http://openweathermap.org/img/w/${forecast[0].weather[0].icon}.png`}
+        src={`https://openweathermap.org/img/w/${forecast[0].weather[0].icon}.png`}
         alt="Weather"
       />
     </div>
