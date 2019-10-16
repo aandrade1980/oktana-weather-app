@@ -10,7 +10,7 @@ class Form extends React.Component {
   getWeather = async e => {
     e.preventDefault();
     const weatherData = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&units=imperial&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&units=imperial&appid=${API_KEY}`
     );
     const jRes = await weatherData.json();
 
