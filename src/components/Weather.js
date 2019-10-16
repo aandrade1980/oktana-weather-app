@@ -17,7 +17,7 @@ const Weather = ({
   changeTempMeasurement,
   addToFavorites
 }) => {
-  const tempDegrees = fahrenheit ? "Fahrenheit" : "Celsius";
+  const tempDegrees = fahrenheit ? "°F" : "°C";
 
   const weatherInfo = forecast && (
     <div>

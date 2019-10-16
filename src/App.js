@@ -8,6 +8,7 @@ import Form from "./components/Form";
 import Weather from "./components/Weather";
 import Charts from "./components/Charts";
 import Favorites from "./components/Favorites";
+import CustomButton from "./components/CustomButton";
 
 const initialWeather = {
   forecast: undefined,
@@ -68,36 +69,33 @@ class App extends React.Component {
           {this.state.forecast && (
             <>
               <div className="chart-buttons-container">
-                <button
+                <CustomButton
+                  value="temp"
+                  onClick={e => this.changeChartData(e)}
                   className={classNames({
                     active: this.state.chartInfoToShow === "temp"
                   })}
-                  type="button"
-                  value="temp"
-                  onClick={e => this.changeChartData(e)}
                 >
                   Temp
-                </button>
-                <button
+                </CustomButton>
+                <CustomButton
+                  value="humidity"
+                  onClick={e => this.changeChartData(e)}
                   className={classNames({
                     active: this.state.chartInfoToShow === "humidity"
                   })}
-                  type="button"
-                  value="humidity"
-                  onClick={e => this.changeChartData(e)}
                 >
                   Humidity
-                </button>
-                <button
+                </CustomButton>
+                <CustomButton
+                  value="pressure"
+                  onClick={e => this.changeChartData(e)}
                   className={classNames({
                     active: this.state.chartInfoToShow === "pressure"
                   })}
-                  type="button"
-                  value="pressure"
-                  onClick={e => this.changeChartData(e)}
                 >
                   Pressure
-                </button>
+                </CustomButton>
               </div>
               <Charts
                 forecast={this.state.forecast}
