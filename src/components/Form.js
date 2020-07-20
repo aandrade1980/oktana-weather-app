@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
 class Form extends React.Component {
   state = {
-    city: ""
+    city: ''
   };
 
   getWeather = async e => {
@@ -14,7 +14,7 @@ class Form extends React.Component {
     );
     const jRes = await weatherData.json();
 
-    if (jRes.cod !== "200") {
+    if (jRes.cod !== '200') {
       this.props.setError({ error: jRes.message });
       this.props.setWeather(undefined);
     } else {
